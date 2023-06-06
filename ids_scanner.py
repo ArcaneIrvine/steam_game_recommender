@@ -4,7 +4,7 @@ from steam import Steam
 from decouple import config
 from pprint import pprint
 
-# Get the Steam Web API key
+# Get the Steam Web API ke
 KEY = config("STEAM_API_KEY")
 steam = Steam(KEY)
 
