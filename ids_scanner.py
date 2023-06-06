@@ -1,10 +1,11 @@
 # import dependencies
 import requests
+import csv
 from steam import Steam
 from decouple import config
 from pprint import pprint
 
-# Get the Steam Web API ke
+# Get the Steam Web API key
 KEY = config("STEAM_API_KEY")
 steam = Steam(KEY)
 
@@ -15,7 +16,7 @@ random_steam_ids = []
 steam_id = 76561198327129152 # initial steam_id
 
 # Increment the initial steam_id by 1 for x repetitions
-for _ in range(50):
+for _ in range(100):
     # Final URL with the correct key and paramaters for the request
     URL = f'{base_url}?key={KEY}&steamids={steam_id}'
     response = requests.get(URL)
@@ -58,4 +59,10 @@ for _ in range(50):
     # increment by 1
     steam_id += 1
     
-print(len(random_steam_ids))
+print("Total IDs gathered:", len(random_steam_ids))
+
+# Save the IDs to a CSV file
+with open('data/useable_steam_ids.csv', 'w', newline='') as file:
+    writer = csv.writer(file)
+    writer.writerow(['Steam ID'])  # Write the header row
+    writer.writerows([[id] for id in random_steam_ids])
