@@ -13,10 +13,10 @@ steam = Steam(KEY)
 base_url = 'https://api.steampowered.com/ISteamUser/GetPlayerSummaries/v2/'
 
 random_steam_ids = []
-steam_id = 76561198327132152 # initial steam_id
+steam_id = 76561198327129152 # initial steam_id
  
 # Increment the initial steam_id by 1 for x repetitions
-for _ in range(3000):
+for _ in range(10000):
     # Final URL with the correct key and paramaters for the request
     URL = f'{base_url}?key={KEY}&steamids={steam_id}'
     response = requests.get(URL)
