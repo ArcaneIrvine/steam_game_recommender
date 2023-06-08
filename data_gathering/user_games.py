@@ -10,7 +10,7 @@ KEY = config("STEAM_API_KEY")
 steam = Steam(KEY)
 
 # load dataset and skip the first line
-IDs = pd.read_csv('data/steam_ids.csv')
+IDs = pd.read_csv('data_gathering/data/steam_ids.csv')
 
 # Dictionary to track user-game ownership
 user_games = {}
@@ -25,7 +25,8 @@ for id in IDs['Steam_ID']:
     # Iterate over each game in the owned games list
     for game in owned_games['games']:
         game_id = game['appid']
-        user_games[id].append(game_id)  # Add the game ID to the user's list of owned games
+        playtime = game['playtime_forever']
+        user_games[id].append({'game_id': game_id, 'playtime': playtime})  # Add game ID and playtime to the user's list of owned games
         
     time.sleep(1)  # Delay for 1 second between API calls
 
@@ -36,5 +37,5 @@ for id, games in user_games.items():
 """
 
 # Export the user-game ownership to a JSON file
-with open('data/user_games.json', 'w') as file:
+with open('data_gathering/data/user_games.json', 'w') as file:
     json.dump(user_games, file)
