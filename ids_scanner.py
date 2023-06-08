@@ -62,7 +62,7 @@ for _ in range(10000):
 print("Total IDs gathered:", len(random_steam_ids))
 
 # Save the IDs to a CSV file
-with open('data/useable_steam_ids.csv', 'w', newline='') as file:
+with open('data/steam_ids.csv', 'w', newline='') as file:
     writer = csv.writer(file)
-    writer.writerow(['Steam ID'])  # Write the header row
+    writer.writerow(['Steam_ID'])  # Write the header row
     writer.writerows([[id] for id in random_steam_ids])
