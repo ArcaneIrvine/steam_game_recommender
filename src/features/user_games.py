@@ -9,7 +9,7 @@ from decouple import config
 KEY = config("STEAM_API_KEY")
 steam = Steam(KEY)
 
-# load dataset and skip the first line
+# Load dataset
 IDs = pd.read_csv('data/raw/steam_ids.csv')
 
 # Dictionary to track user-game ownership
