@@ -10,7 +10,7 @@ KEY = config("STEAM_API_KEY")
 steam = Steam(KEY)
 
 # load dataset and skip the first line
-IDs = pd.read_csv('data_gathering/data/steam_ids.csv')
+IDs = pd.read_csv('data/raw/steam_ids.csv')
 
 # Dictionary to track user-game ownership
 user_games = {}
@@ -37,5 +37,5 @@ for id, games in user_games.items():
 """
 
 # Export the user-game ownership to a JSON file
-with open('data_gathering/data/user_games.json', 'w') as file:
+with open('data/interim/user_games.json', 'w') as file:
     json.dump(user_games, file)
