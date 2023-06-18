@@ -9,7 +9,7 @@ KEY = config("STEAM_API_KEY")
 steam = Steam(KEY)
 
 # Load the JSON file
-with open('data/interim/user_games_filtered.json', 'r') as file:
+with open('data/interim/user_games.json', 'r') as file:
     data = json.load(file)
 
 # Extract the necessary information from the data (for 200 users)
@@ -17,13 +17,13 @@ game_ids = []
 playtime = []
 game_names = []
 owners = []
-count = 0
+# count = 0
 
 try:
     # Loop through the data for the first x users
     for user in data:
-        if count >= 3:
-                break
+        # if count >= 3:
+                # break
         
         for game in data[user]:
             game_id = game['game_id']
@@ -50,7 +50,7 @@ try:
             time.sleep(1)
 
         # Increment the count
-        count += 1
+        # count += 1
 
 except Exception as e:
     # Handle the exception and print an error message
